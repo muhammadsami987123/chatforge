@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security vulnerability
+    url: https://github.com/muhammadsami987123/chatforge/security/advisories/new
+    about: Report privately. Never open a public issue for a security problem.
+  - name: Questions and discussion
+    url: https://github.com/muhammadsami987123/chatforge/discussions
+    about: Setup help, usage questions, and ideas that are not yet a concrete proposal.

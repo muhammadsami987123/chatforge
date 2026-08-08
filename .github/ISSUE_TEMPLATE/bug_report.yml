@@ -1,0 +1,80 @@
+name: Bug report
+description: Something in ChatForge does not work as documented
+labels: ["bug", "needs triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Do not report security vulnerabilities here.** Use the private disclosure process in
+        [SECURITY.md](../blob/main/SECURITY.md).
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Affected area
+      options:
+        - Builder UI (form mode)
+        - Builder UI (flow canvas)
+        - Flow engine / node execution
+        - LLM / streaming chat
+        - Knowledge base / RAG
+        - Embed widget
+        - React SDK
+        - Public API
+        - Auth
+        - Database / migrations
+        - Self-hosting / Docker
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: What did you expect, and what did you get instead?
+    validations:
+      required: true
+
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Create a bot with ...
+        2. Add a condition node ...
+        3. Send "hello" in preview
+        4. See error
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs or error output
+      description: Server and browser console output. **Redact API keys and secrets.**
+      render: shell
+
+  - type: input
+    id: version
+    attributes:
+      label: ChatForge version or commit SHA
+    validations:
+      required: true
+
+  - type: input
+    id: env
+    attributes:
+      label: Environment
+      placeholder: "Node 20.11, pnpm 9.1, Postgres 16, Chrome 133, macOS 15"
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: I searched existing issues and this is not a duplicate
+          required: true
+        - label: I am using the pgvector-enabled Postgres from `docker-compose.yml` (if this is a DB or RAG issue)

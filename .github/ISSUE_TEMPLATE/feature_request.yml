@@ -1,0 +1,55 @@
+name: Feature request
+description: Propose a capability ChatForge does not have
+labels: ["enhancement", "needs triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Check [docs/PLAN.md](../blob/main/docs/PLAN.md) first — your idea may already be scheduled,
+        or explicitly deferred to post-1.0.
+
+        **Describe the problem, not the implementation.**
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem are you trying to solve?
+      description: What are you unable to do today, and what is the cost of that?
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: Optional. If you have an approach in mind, describe it.
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives you considered
+      description: Including workarounds you are using now.
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - New flow node type
+        - Builder UX
+        - Flow engine
+        - Knowledge base / RAG
+        - LLM providers
+        - Deployment surface (widget / SDK / API)
+        - Analytics and operations
+        - Self-hosting
+        - Other
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: contribute
+    attributes:
+      label: Contribution
+      options:
+        - label: I am willing to open a PR for this
