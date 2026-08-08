@@ -18,49 +18,28 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Skip if project is not scaffolded yet
-        id: guard
-        run: |
-          if [ -f package.json ]; then
-            echo "scaffolded=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "scaffolded=false" >> "$GITHUB_OUTPUT"
-            echo "::notice::No package.json yet — skipping verification. Remove this guard once Phase 0 scaffolding lands."
-          fi
-
       - uses: pnpm/action-setup@v4
-        if: steps.guard.outputs.scaffolded == 'true'
         with:
-          version: 9
+          version: 10
 
       - uses: actions/setup-node@v4
-        if: steps.guard.outputs.scaffolded == 'true'
         with:
-          node-version: 20
+          node-version: 22
           cache: pnpm
 
       - name: Install
-        if: steps.guard.outputs.scaffolded == 'true'
         run: pnpm install --frozen-lockfile
 
-      - name: Generate Prisma client
-        if: steps.guard.outputs.scaffolded == 'true'
-        run: pnpm prisma generate
-
       - name: Typecheck
-        if: steps.guard.outputs.scaffolded == 'true'
         run: pnpm typecheck
 
       - name: Lint
-        if: steps.guard.outputs.scaffolded == 'true'
         run: pnpm lint
 
       - name: Test
-        if: steps.guard.outputs.scaffolded == 'true'
         run: pnpm test
 
       - name: Build
-        if: steps.guard.outputs.scaffolded == 'true'
         env:
           DATABASE_URL: postgresql://user:pass@localhost:5432/db?schema=public
           NEXTAUTH_URL: http://localhost:3000
